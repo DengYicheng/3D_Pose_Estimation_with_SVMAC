@@ -91,7 +91,7 @@ class H36M(pose_dataset_base.PoseDatasetBase):
         if not os.path.exists('data/h36m'):
             os.mkdir('data/h36m')
 
-        # 3Dポイント
+        # 3D joints
         if not os.path.exists('data/h36m/points_3d.pkl'):
             print('Downloading 3D points in Human3.6M dataset.')
             os.system('wget --no-check-certificate "https://onedriv' + \
@@ -100,7 +100,7 @@ class H36M(pose_dataset_base.PoseDatasetBase):
                 'data/h36m/points_3d.pkl')
         with open('data/h36m/points_3d.pkl', 'rb') as f:
             p3d = pickle.load(f)
-        # カメラパラメータ
+        # camera parameters
         if not os.path.exists('data/h36m/cameras.pkl'):
             print('Downloading camera parameters.')
             os.system('wget --no-check-certificate "https://onedriv' + \
