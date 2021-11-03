@@ -287,11 +287,11 @@ def p_mpjpe_z(predicted, target, scale):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('model_path', type=str,
-                        help='Generatorの重みファイルへのパス')
+                        help='path of the trained Generator')
     parser.add_argument('--gpu', '-g', type=int, default=0)
     parser.add_argument('--batchsize', '-b', type=int, default=200)
     parser.add_argument('--allow_inversion', action="store_true",
-                         help='評価時にzの反転を許可するかどうか')
+                         help='when evaluation, allow invert the poses')
     args = parser.parse_args()
 
     # load options
