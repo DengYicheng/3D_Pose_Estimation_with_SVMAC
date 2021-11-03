@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import chainer
 import chainer.functions as F
 import chainer.links as L
@@ -52,7 +50,6 @@ class Discriminator(chainer.Chain):
             down7 = self.activate_func(self.bn6(self.l7(down6)) + down5)
             return self.bn8(self.l8(down7))
         else:
-
             down1 = F.dropout(self.activate_func(self.l1(x)), self.dropout)
             down2 = F.dropout(self.activate_func(self.l2(down1)), self.dropout)
             down3 = F.dropout(self.activate_func(self.l3(down2) + down1), self.dropout)
