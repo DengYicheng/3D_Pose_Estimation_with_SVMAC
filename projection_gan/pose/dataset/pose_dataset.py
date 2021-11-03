@@ -39,13 +39,13 @@ def project_point_radial(P, R, T, f, c, k, p):
     Project points from 3d to 2d using camera parameters
     including radial and tangential distortion
     Args
-    P: Nx3 points in world coordinates 世界坐标系的关节坐标点
-    R: 3x3 Camera rotation matrix 旋转矩阵
-    T: 3x1 Camera translation parameters 摄像机转换参数
-    f: (scalar) Camera focal length 相机焦距
-    c: 2x1 Camera center 相机中心
-    k: 3x1 Camera radial distortion coefficients 相机径向畸变系数
-    p: 2x1 Camera tangential distortion coefficients 相机切向畸变系数
+    P: Nx3 points in world coordinates
+    R: 3x3 Camera rotation matrix
+    T: 3x1 Camera translation parameters
+    f: (scalar) Camera focal length
+    c: 2x1 Camera center
+    k: 3x1 Camera radial distortion coefficients
+    p: 2x1 Camera tangential distortion coefficients
     Returns
     Proj: Nx2 points in pixel space
     D: 1xN depth of each point in camera space
@@ -109,7 +109,7 @@ class H36M(pose_dataset_base.PoseDatasetBase):
                 'data/h36m/cameras.pkl')
         with open('data/h36m/cameras.pkl', 'rb') as f:
             cams = pickle.load(f)
-        # StackedHourglassによる検出結果
+        # StackedHourglass
         if use_sh_detection:
             if not os.path.exists('data/h36m/sh_detect_2d.pkl'):
                 print('Downloading detected 2D points by Stacked Hourglass.')
@@ -129,7 +129,7 @@ class H36M(pose_dataset_base.PoseDatasetBase):
         else:
             raise Exception('Invalid action.')
 
-        # 使用する関節位置のインデックス(17点)
+        # 17 joints
         dim_to_use_x = np.where(np.array([x != '' for x in H36M_NAMES]))[0] * 3
         dim_to_use_y = dim_to_use_x + 1
         dim_to_use_z = dim_to_use_x + 2
@@ -196,7 +196,7 @@ class H36M(pose_dataset_base.PoseDatasetBase):
             if 'WalkingDog' in file_name:
                 file_name = file_name.replace('WalkingDog', 'WalkDog')
             sh_detect_xy = self.p2d_sh[subject][file_name]
-            sh_detect_xy = sh_detect_xy[cam_name][start_pos:start_pos+length] # 读取数据
+            sh_detect_xy = sh_detect_xy[cam_name][start_pos:start_pos+length] # load adata
 
         if 'TakingPhoto' in file_name:
             file_name = file_name.replace('TakingPhoto', 'Photo')
