@@ -55,8 +55,6 @@ def main():
                         choices=['h36m', 'mpii', 'mpi_inf'])
     parser.add_argument('-a', '--activate_func',
                         type=str, default='leaky_relu')
-    parser.add_argument('-c', '--gan_accuracy_cap', type=float, default=0.9,
-                        help="Disのaccuracyがこれを超えると更新しない手加減")
     parser.add_argument('-A', '--action', type=str, default='all')
     parser.add_argument('-s', '--snapshot_interval', type=int, default=1)
     parser.add_argument('-l', '--log_interval', type=int, default=1)
